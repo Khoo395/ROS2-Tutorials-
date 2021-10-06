@@ -22,10 +22,12 @@ public:
 
         }
         RCLCPP_INFO(this->get_logger(),"The Server is Up");
-
+        
+        while(true){
         std::cout<< "Please type 1 for reset or 0 for nothing";
         int if_reset_;
         std::cin >> if_reset_;
+        RCLCPP_INFO(this->get_logger(),"Input taken");
 
         auto request = std::make_shared<example_interfaces::srv::SetBool::Request>();
         request->data = if_reset_; 
@@ -40,6 +42,7 @@ public:
         catch(const std::exception &e)
         {
         RCLCPP_INFO(this->get_logger(), "Service Call Failed");
+        }
         }
 
     }

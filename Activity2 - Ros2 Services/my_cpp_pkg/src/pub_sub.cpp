@@ -18,7 +18,7 @@ public:
     {
         publisher_ = this->create_publisher<std_msgs::msg::String>("number_count",10);
         subscriber_ = this->create_subscription<std_msgs::msg::String>("number", 10, std::bind(&Publisher_Subsriber::TopicCallback, this, _1));
-        auto server = this->create_service<example_interfaces::srv::SetBool>("reset_counter",std::bind(&Publisher_Subsriber::Callback_Reset_Num, this, _1, _2));
+        server = this->create_service<example_interfaces::srv::SetBool>("reset_counter",std::bind(&Publisher_Subsriber::Callback_Reset_Num, this, _1, _2));
         RCLCPP_INFO(this->get_logger(), "Number Counter has been started");
     }
 
@@ -36,7 +36,7 @@ publisher_->publish(message);
 rclcpp::Publisher<std_msgs::msg::String>:: SharedPtr publisher_;  
 int count_ = 0; 
 rclcpp::Subscription<std_msgs::msg::String>:: SharedPtr subscriber_;
-
+rclcpp::Service<example_interfaces::srv::SetBool>::SharedPtr server;
 
 void Callback_Reset_Num (example_interfaces::srv::SetBool::Request::SharedPtr request, example_interfaces::srv::SetBool::Response::SharedPtr response)
 {
