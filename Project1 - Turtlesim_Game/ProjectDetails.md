@@ -1,6 +1,8 @@
 ## Turtlsim Game Project Details 
 There are 3 ROS nodes involved in this program, and their relationship is shown in the diagram below. 
 
+![0001](https://user-images.githubusercontent.com/74847078/136343500-8e659ec7-40c2-41d4-b546-a211b154ca9a.jpg)
+
 ### turtlesim_node
 Graphics part of the program, comes with ROS installation. Request to move, kill, or get information on turtles will ultimately go through here. The components used include:
 1. **Publisher to topic turtle1/pose**, which updates position of the catcher data.
